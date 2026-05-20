@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import '../styles/login.css';
 
 const ACCOUNTS = [
-  { username: 'admin', password: 'admin123', role: 'admin', name: 'Administrator', branch: 'HQ' },
-  { username: 'staff', password: 'staff123', role: 'staff', name: 'Maria Santos', branch: 'BGC Branch' },
+  { username: 'jireh', password: 'faith', role: 'admin', name: 'Administrator', branch: 'HQ' },
+  { username: 'jai', password: '212121', role: 'staff', name: 'Maria Santos', branch: 'BGC Branch' },
 ];
 
 export function LoginPage({ onLoginSuccess, staffAccounts = [] }) {

@@ -26,7 +26,7 @@ const branches = [
 ];
 
 const initialStaffAccounts = [
-  { id:1, name:'Maria Santos', username:'staff', branch:'BGC Branch', status:'Active', lastLogin:'Today 08:32', role:'staff' },
+  { id:1, name:'Maria Santos', username:'jai', branch:'BGC Branch', status:'Active', lastLogin:'Today 08:32', role:'staff' },
   { id:2, name:'Jess Reyes', username:'jess.reyes', branch:'Makati Branch', status:'Active', lastLogin:'Yesterday', role:'staff' },
   { id:3, name:'Nico Cruz', username:'nico.cruz', branch:'QC Branch', status:'Inactive', lastLogin:'3 days ago', role:'staff' },
 ];
