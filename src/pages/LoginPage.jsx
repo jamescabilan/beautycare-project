@@ -173,7 +173,7 @@ export function LoginPage({ onLoginSuccess, staffAccounts = [] }) {
           </form>
 
           <div className="login-hint">
-            Demo → Admin: <code>admin / admin123</code> &nbsp;|&nbsp; Staff: <code>staff / staff123</code>
+            Demo → Admin: <code>jireh / faith</code> &nbsp;|&nbsp; Staff: <code>jai / 212121</code>
           </div>
         </div>
       </div>
