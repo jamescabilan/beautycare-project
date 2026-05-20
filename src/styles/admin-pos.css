@@ -1,0 +1,149 @@
+.pos-page {
+  padding: 32px 36px;
+  background: var(--warm-white);
+  min-height: 100vh;
+}
+
+.pos-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.filters-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+}
+
+@media (max-width: 800px) {
+  .filters-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.product-card-pos {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card-pos:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.product-emoji-bg {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+}
+
+.product-info {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.category-badge {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--rose);
+  margin-bottom: 6px;
+}
+
+.product-info h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--charcoal);
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.description {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  flex: 1;
+}
+
+.product-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.price {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+.stock-info {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+
+.in-stock {
+  color: var(--rose);
+  font-weight: 600;
+}
+
+.out-of-stock {
+  color: #c62828;
+  font-weight: 600;
+}
+
+.btn-quick-sale {
+  padding: 6px 14px;
+  background: var(--rose);
+  color: white;
+  border: none;
+  border-radius: 18px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.15s;
+}
+
+.btn-quick-sale:hover {
+  background: var(--deep-rose);
+  transform: translateY(-1px);
+}
+
+.btn-quick-sale.disabled {
+  background: var(--text-light);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}

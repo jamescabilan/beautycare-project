@@ -1,0 +1,128 @@
+.attendance-page {
+  padding: 32px 36px;
+  background: var(--warm-white);
+  min-height: 100vh;
+}
+
+.attendance-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+.clock-section {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: var(--shadow);
+}
+
+.digital-clock {
+  text-align: center;
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.clock-display {
+  font-family: 'Courier New', monospace;
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--rose);
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock-date {
+  font-size: 14px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+.today-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 14px;
+  background: var(--cream);
+  border-radius: 12px;
+}
+
+.summary-item .label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-light);
+  margin-bottom: 6px;
+}
+
+.summary-item .value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--charcoal);
+}
+
+@media (max-width: 600px) {
+  .today-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .clock-display {
+    font-size: 3rem;
+  }
+}
+
+.filters-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (max-width: 800px) {
+  .filters-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filter-group label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-mid);
+}
+
+.filter-group input,
+.filter-group select {
+  padding: 9px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  background: white;
+  color: var(--charcoal);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.filter-group input:focus,
+.filter-group select:focus {
+  border-color: var(--rose);
+}

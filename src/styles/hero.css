@@ -1,0 +1,87 @@
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, #f0e6dd 0%, #ead9ce 40%, #e0cec4 100%);
+  padding: 80px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(201, 123, 110, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  left: -40px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(201, 169, 110, 0.12) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  font-size: 17px;
+  color: var(--text-mid);
+  margin-bottom: 32px;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  background: white;
+  color: var(--text-mid);
+  border: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 40px 16px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+  }
+
+  .hero p {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .hero-badges {
+    gap: 8px;
+  }
+
+  .badge {
+    padding: 5px 12px;
+    font-size: 11px;
+  }
+}

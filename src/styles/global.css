@@ -1,0 +1,18 @@
+/* Global Styles for LuxeCare Beauty Co. */
+
+/* Variables and Base */
+@import './variables.css';
+@import './navigation.css';
+@import './hero.css';
+@import './products.css';
+@import './buttons.css';
+@import './bag.css';
+@import './branches.css';
+@import './admin.css';
+@import './admin-staff.css';
+@import './admin-reports.css';
+@import './admin-branches.css';
+@import './admin-settings.css';
+@import './admin-attendance.css';
+@import './admin-pos.css';
+@import './modals.css';

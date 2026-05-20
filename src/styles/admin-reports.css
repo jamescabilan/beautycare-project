@@ -1,0 +1,37 @@
+.reports-page {
+  padding: 32px 36px;
+  background: var(--warm-white);
+  min-height: 100vh;
+}
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 28px;
+}
+
+@media (max-width: 1200px) {
+  .reports-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.cat-name {
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.revenue {
+  font-weight: 700;
+  color: var(--rose);
+}
+
+.product-name {
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.emoji {
+  font-size: 22px;
+}
