@@ -4,6 +4,38 @@ import { productService, orderService, orderItemService } from '../config/supaba
 
 export const AppContext = createContext();
 
+const mapDbOrderStatusToUi = (status) => {
+  switch ((status || '').toLowerCase()) {
+    case 'pending':
+    case 'preparing':
+      return 'Preparing';
+    case 'shipped':
+    case 'on the way':
+      return 'On the Way';
+    case 'delivered':
+      return 'Delivered';
+    case 'cancelled':
+      return 'Cancelled';
+    default:
+      return 'Preparing';
+  }
+};
+
+const mapUiOrderStatusToDb = (status) => {
+  switch (status) {
+    case 'Preparing':
+      return 'pending';
+    case 'On the Way':
+      return 'shipped';
+    case 'Delivered':
+      return 'delivered';
+    case 'Cancelled':
+      return 'cancelled';
+    default:
+      return 'pending';
+  }
+};
+
 const initialProducts = [
   { id:1, name:'Rose Glow Vitamin C Serum', category:'Skincare', price:899, oprice:1200, stock:45, emoji:'🧴', badge:'sale', rating:4.8, description:'Brightening serum with 15% Vitamin C and rose hip oil for radiant, even-toned skin.' },
   { id:2, name:'Hydra Velvet Lip Gloss', category:'Makeup', price:350, oprice:null, stock:80, emoji:'💋', badge:'new', rating:4.6, description:'Ultra-glossy lip color with hyaluronic acid for plump, moisturized lips all day.' },
@@ -63,19 +95,26 @@ export function AppProvider({ children }) {
       try {
         setIsLoadingOrders(true);
         const supabaseOrders = await orderService.getAll();
-        if (supabaseOrders && supabaseOrders.length > 0) {
-          // Map Supabase orders to app format
+        if (Array.isArray(supabaseOrders)) {
+          // Supabase is the source of truth when configured, even if the table is currently empty.
           const mappedOrders = supabaseOrders.map(order => ({
             id: order.id,
             customer: order.customer_name,
             email: order.customer_email,
             phone: order.customer_phone,
             address: order.delivery_address,
-            items: order.order_items?.length || 0,
-            orderItems: order.order_items || [],
-            total: order.total,
+            payment: order.payment_method,
+            branch: order.branch_pickup,
+            items: order.order_items?.reduce((sum, item) => sum + (item.qty || 0), 0) || 0,
+            orderItems: (order.order_items || []).map(item => ({
+              id: item.product_id,
+              qty: item.qty,
+              price: Number(item.price),
+              total: Number(item.price) * item.qty
+            })),
+            total: Number(order.total),
             date: new Date(order.created_at).toLocaleDateString('en-PH'),
-            status: order.status === 'pending' ? 'Preparing' : order.status === 'shipped' ? 'On the Way' : 'Delivered'
+            status: mapDbOrderStatusToUi(order.status)
           }));
           setOrders(mappedOrders);
           localStorage.setItem('beautycare_orders', JSON.stringify(mappedOrders));
@@ -379,13 +418,18 @@ export function AppProvider({ children }) {
         throw new Error('Failed to create order');
       }
 
-      // Save order items to Supabase
-      for (const item of bagItems) {
-        await orderItemService.create(savedOrder.id, {
-          product_id: item.id,
-          qty: item.qty,
-          price: item.price
-        });
+      try {
+        // Save order items to Supabase
+        for (const item of bagItems) {
+          await orderItemService.create(savedOrder.id, {
+            product_id: item.id,
+            qty: item.qty,
+            price: item.price
+          });
+        }
+      } catch (itemError) {
+        await orderService.delete(savedOrder.id);
+        throw itemError;
       }
 
       // Update local state
@@ -446,7 +490,7 @@ export function AppProvider({ children }) {
 
     try {
       // Map UI status to database status
-      const dbStatus = nextStatus === 'Preparing' ? 'pending' : nextStatus === 'On the Way' ? 'shipped' : 'delivered';
+      const dbStatus = mapUiOrderStatusToDb(nextStatus);
       
       // Update in Supabase
       const updated = await orderService.updateStatus(orderId, dbStatus);
