@@ -71,7 +71,7 @@ export function LoginPage({ onLoginSuccess, staffAccounts = [] }) {
       <div className="login-left">
         <div className="login-brand">
           <div className="login-logo">💄</div>
-          <h1>LuxeCare<br />Beauty Co.</h1>
+          <h1>🚀 FRESHLY REBUILT 🚀<br />BeautyCare Co.</h1>
           <p>Your all-in-one portal for managing beauty products, sales, inventory, and team.</p>
           
           <div className="login-features">

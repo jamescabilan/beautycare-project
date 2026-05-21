@@ -101,8 +101,8 @@ function AdminLoginGate({ onLoginSuccess, staffAccounts = [] }) {
   const [error, setError] = useState('');
 
   const ACCOUNTS = [
-    { username: 'admin', password: 'admin123', role: 'admin', name: 'Administrator' },
-    { username: 'staff', password: 'staff123', role: 'staff', name: 'Maria Santos' },
+    { username: 'jireh', password: 'faith', role: 'admin', name: 'Administrator' },
+    { username: 'jai', password: '212121', role: 'staff', name: 'Maria Santos' },
   ];
 
   const handleLogin = (e) => {
@@ -240,7 +240,7 @@ function AdminLoginGate({ onLoginSuccess, staffAccounts = [] }) {
       </form>
 
       <div style={{ marginTop: '15px', fontSize: '12px', color: 'var(--text-light)', textAlign: 'center' }}>
-        Demo: <code style={{ background: 'var(--cream)', padding: '2px 6px', borderRadius: '4px' }}>admin/admin123</code> or <code style={{ background: 'var(--cream)', padding: '2px 6px', borderRadius: '4px' }}>staff/staff123</code>
+        Demo: <code style={{ background: 'var(--cream)', padding: '2px 6px', borderRadius: '4px' }}>jireh/faith</code> or <code style={{ background: 'var(--cream)', padding: '2px 6px', borderRadius: '4px' }}>jai/212121</code>
       </div>
     </div>
   );
